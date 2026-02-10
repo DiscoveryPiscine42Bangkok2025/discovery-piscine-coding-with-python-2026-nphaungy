@@ -1,3 +1,6 @@
-user_input = input("")
-result = user_input.swapcase()
-print(result)
+#!/usr/bin/env python
+import sys
+if len(sys.argv) == 2:
+    print(sys.argv[1].swapcase())
+else:
+    print("none")
