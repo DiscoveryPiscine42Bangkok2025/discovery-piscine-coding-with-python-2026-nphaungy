@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import sys
 if len(sys.argv) == 3:
     keyword = sys.argv[1]
