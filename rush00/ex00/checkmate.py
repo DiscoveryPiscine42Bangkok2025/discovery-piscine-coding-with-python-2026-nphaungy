@@ -1,31 +1,30 @@
 #!/usr/bin/env python
 def checkmate(board):
-    if not isinstance(board, str):
+    if not isinstance(board, str): 
         return
     try:
         if not board: return 
         rows = board.strip().split('\n')
         if not rows: return
-        height = len(rows)
-        width = len(rows[0])
-        if height == 0 or width == 0: return
+        h = len(rows)
+        w = len(rows[0])
+        if h == 0 or w == 0: return 
         for r in rows:
-            if len(r) != width: return
-        if board.count('K') != 1: return
-        king_pos = None
-        for r in range(height):
-            for c in range(width):
+            if len(r) != w: return
+        if board.count('K') != 1: return 
+        k_position = None
+        for r in range(h):
+            for c in range(w):
                 if rows[r][c] == 'K':
-                    king_pos = (r, c)
+                    k_position = (r, c)
                     break
-            if king_pos: break
-        if not king_pos: return 
-        k_row, k_col = king_pos
-        straight_dirs = [(-1, 0), (1, 0), (0, -1), (0, 1)] 
-        diag_dirs = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
-        for dr, dc in straight_dirs:
+            if k_position: break
+        if not k_position: return 
+        k_row, k_col = k_position
+        #ลูปหา R กับ Q ที่จะกินคิง
+        for dr, dc in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
             curr_r, curr_c = k_row + dr, k_col + dc
-            while 0 <= curr_r < height and 0 <= curr_c < width:
+            while 0 <= curr_r < h and 0 <= curr_c < w:
                 p = rows[curr_r][curr_c]
                 if p in ['R', 'Q']:
                     print("Success")
@@ -34,10 +33,11 @@ def checkmate(board):
                     break
                 curr_r += dr
                 curr_c += dc
-        for dr, dc in diag_dirs:
+        #ลูปหา B กับ Q และ P ที่จะกินคิง
+        for dr, dc in [(-1, -1), (-1, 1), (1, -1), (1, 1)]:
             curr_r, curr_c = k_row + dr, k_col + dc
             dist = 0
-            while 0 <= curr_r < height and 0 <= curr_c < width:
+            while 0 <= curr_r < h and 0 <= curr_c < w:
                 dist += 1
                 p = rows[curr_r][curr_c]  
                 if p in ['B', 'Q']:
