@@ -18,14 +18,29 @@ def main():
     checkmate(board)
     board = """\
 ....
-.P..
+.....
 ....\
 """
     checkmate(board)
     board = """\
 ....
 .P..
-..K.\
+....\
+"""
+    checkmate(board)
+    board = """\
+.....
+..K..
+...R.
+....Q\
+"""
+    checkmate(board)
+    
+    board = """\
+P...
+....
+..K.
+....\
 """
     checkmate(board)
     board = """\

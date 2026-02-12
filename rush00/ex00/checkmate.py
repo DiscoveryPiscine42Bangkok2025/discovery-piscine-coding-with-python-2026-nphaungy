@@ -8,7 +8,7 @@ def checkmate(board):
         if not rows: return
         h = len(rows)
         w = len(rows[0])
-        if h == 0 or w == 0: return 
+        if h != w or h == 0: return 
         for r in rows:
             if len(r) != w: return
         if board.count('K') != 1: return 
@@ -44,7 +44,7 @@ def checkmate(board):
                     print("Success")
                     return          
                 elif p == 'P':
-                    if dr == -1 and dist == 1:
+                    if dr == 1 and dist == 1:
                         print("Success")
                         return
                     else:
